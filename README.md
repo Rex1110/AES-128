@@ -105,11 +105,10 @@ In the first clock cycle, the set_key_i signal is asserted, and the key is writt
 
 ---
 
-![encrypt](https://github.com/user-attachments/assets/f8521b16-e3ed-490e-ab2c-3aaef38c9bd9)
+![encrypt](https://github.com/user-attachments/assets/4b582e82-d2f2-40b1-89e3-8dde8be2ab78)
 
 
-![decrypt](https://github.com/user-attachments/assets/bd58e780-0a19-4130-b0e4-b652c1e4942e)
-
+![decrypt](https://github.com/user-attachments/assets/cedfce22-dc4e-435e-baa1-c25bbd972e94)
 
 ## 6. Waveform
 
@@ -117,7 +116,8 @@ In the first clock cycle, the set_key_i signal is asserted, and the key is writt
 
 In the first clock cycle, the `set_key_i` signal is asserted, and the key is written into the key0 register. Subsequently, a key expansion operation is performed in each clock cycle, and the computed results are sequentially stored into the corresponding key registers. Once the key10 register is written, the `gen_key_done` signal is asserted to indicate the completion of the key expansion process.
 
-![set_key](https://github.com/user-attachments/assets/64ced988-4aed-4390-adf2-5d1032c28d6a)
+![set_key](https://github.com/user-attachments/assets/30bd9836-5132-4adf-8f88-8032c8418afd)
+
 
 ### 2. Encrypt and decrypt
 
@@ -125,4 +125,5 @@ When encryption is allowed (i.e., not during the key generation process), the `e
 
 Similarly, when decryption is allowed, the `decrypt` signal is asserted to initiate the operation. The process starts with the initial round key addition in the first clock cycle. This is followed by nine rounds of operations, where each round sequentially performs `InvShiftRows`, `InvSubBytes`, `AddRoundKey`, and `InvMixColumns`. Finally, the decryption concludes with a final round that performs `InvShiftRows`, `InvSubBytes`, and `AddRoundKey`, excluding the `InvMixColumns` operation. Once the decryption process is complete, the `decrypt_done` signal is asserted to indicate its completion.
 
-![en_de](https://github.com/user-attachments/assets/7b68c610-b4ca-4e5e-bd4c-ff04cfa416c0)
+![en_de](https://github.com/user-attachments/assets/32d2cb3e-0bb4-4d47-8bb5-7533a0a507c5)
+
