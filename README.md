@@ -99,7 +99,7 @@ when_key_expansion_decrypt_idle: assert property (
 
 ## 5. Encrypt && decrypt example
 ### Plaintext:
-In the first clock cycle, the set_key_i signal is asserted, and the key is written into the key0 register. Subsequently, a key expansion operation is performed in each clock cycle, and the computed results are sequentially stored into the corresponding key registers. Once the key10 register is written, the gen_key_done signal is asserted to indicate the completion of the key expansion process.
+This AES-128 system is designed to minimize area, featuring modules for Key Expansion, Encrypt, Decrypt, 16 S-box, and 16 Inverse S-box. To optimize resources, the first 4 S-boxes are shared between the Key Expansion and Encrypt modules. The key schedule requires 10 rounds of computation and includes a finish state to prevent decryption from using incomplete round keys. Each encryption or decryption operation takes 10 clock cycles, and key reconfiguration can only occur after current operations are fully completed.
 ### Key:
 0x54686174_7320756e_67204675_6d79204b
 
